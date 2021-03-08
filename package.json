@@ -5,14 +5,17 @@
 		"dev": "next",
 		"build": "next build",
 		"start": "next start",
-		"wordpress": "wp-env start"
+		"wordpress": "wp-env start",
+		"wp": "wp-env run cli wp",
+		"seed": "curl -N http://loripsum.net/api/5 | wp-env run cli wp post generate --post_content --count=25"
 	},
 	"dependencies": {
 		"classnames": "2.2.6",
 		"date-fns": "2.14.0",
 		"next": "latest",
 		"react": "^16.13.1",
-		"react-dom": "^16.13.1"
+		"react-dom": "^16.13.1",
+		"swr": "^0.4.2"
 	},
 	"devDependencies": {
 		"postcss-flexbugs-fixes": "4.2.1",
