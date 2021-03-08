@@ -6,10 +6,17 @@ import Intro from '../components/intro'
 import Layout from '../components/layout'
 import { getAllPostsForHome } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
-
-export default function Index({ allPosts: { edges }, preview }) {
-  const heroPost = edges[0]?.node
-  const morePosts = edges.slice(1)
+import useSwr from 'swr'
+let fetchFunction = (url) => fetch(url).then(r => r.json());
+export default function Index(props) {
+  const { preview } = props;
+  const { data: {allPosts}, error } = useSwr('/api/posts/home', fetchFunction, {
+    initialData: {
+      allPosts: props.allPosts
+    }
+  });
+  const heroPost = allPosts.edges[0]?.node
+  const morePosts = allPosts.edges.slice(1)
 
   return (
     <>

@@ -18,7 +18,6 @@ import useSwr from 'swr';
  * Generic JSON fetch function.
  */
 let fetchFunction = (url) => fetch(url).then(r => r.json());
-
 export default function Post(props) {
   const { preview } = props;
   const { data: { post, posts }, error } = useSwr(`/api/posts/${props.post?.slug}`, fetchFunction, {
@@ -27,7 +26,6 @@ export default function Post(props) {
       post: props.post
     }
   });
-  
   const router = useRouter()
   const morePosts = posts?.edges
 
