@@ -12,14 +12,31 @@ import PostTitle from '../../components/post-title'
 import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import Tags from '../../components/tags'
+import useSwr from 'swr';
 
-export default function Post({ post, posts, preview }) {
+/**
+ * Generic JSON fetch function.
+ */
+let fetchFunction = (url) => fetch(url).then(r => r.json());
+
+export default function Post(props) {
+  const { preview } = props;
+  const { data: { post, posts }, error } = useSwr(`/api/posts/${props.post?.slug}`, fetchFunction, {
+    initialData: {
+      posts:props.posts,
+      post: props.post
+    }
+  });
+  
   const router = useRouter()
   const morePosts = posts?.edges
 
+  
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+
+  
 
   return (
     <Layout preview={preview}>
