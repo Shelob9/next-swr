@@ -1,4 +1,3 @@
-
 import { getAllPostsForHome } from "../../../lib/api";
 
 /**
