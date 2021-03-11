@@ -29,12 +29,9 @@ export default function Post(props) {
   const router = useRouter()
   const morePosts = posts?.edges
 
-  
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
-
-  
 
   return (
     <Layout preview={preview}>
@@ -85,6 +82,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
       post: data.post,
       posts: data.posts,
     },
+    revalidate: 60
   }
 }
 
