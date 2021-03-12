@@ -1,10 +1,9 @@
-# Local Headless WordPress Development With NextJS
+# NextJS + WordPress + useSWR
 
-This application was generated with the [WordPress example](https://github.com/vercel/next.js/tree/canary/examples/cms-wordpress)
+Demo of Next.JS Automatic Static Optimization With WordPress backend.
 
-`yarn create next-app --example cms-wordpress cms-wordpress-app`
+Started from the [example code for this post](https://dev.to/shelob9/using-docker-for-local-development-of-headless-wordpress-apps-with-nextjs-1m85) about NextJS + Docker.
 
-[Example code for this post](https://dev.to/shelob9/using-docker-for-local-development-of-headless-wordpress-apps-with-nextjs-1m85)
 ## Development
 
 - Start [docker-based local development site](https://developer.wordpress.org/block-editor/packages/packages-env/) with these plugins pre-installed:
@@ -26,7 +25,8 @@ Beacuse the Headless Mode plugin is being used, all unauthenticated requests to 
 
 The directory "wordpress-plugin" is a plugin that will be activated. You can put PHP code there. This is a good place to register custom post types, mutations, etc.
 
-## Wordpress
+## WordPress Site
+
 - Start server
   - `yarn wordpress`
 - Create 25 sample posts
